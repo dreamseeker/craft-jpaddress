@@ -1,0 +1,36 @@
+{#
+/**
+ * JpAddress plugin for Craft CMS
+ *
+ * JpAddressFieldType Settings HTML
+ *
+ * @author    TORU KOKUBUN
+ * @copyright Copyright (c) 2016 TORU KOKUBUN
+ * @link      http://d-s-b.jp/
+ * @package   JpAddress
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+<input type="hidden" name="locale" value="{{ craft.locale }}"/>
+
+{{ forms.lightswitchField({
+    label:        'Use Map?'|t,
+    id:           'useGoogleMap',
+    name:         'useGoogleMap',
+    instructions: 'Please turn on if you use Google Map'|t,
+    value:        settings.useGoogleMap,
+    errors:       settings.getErrors('useGoogleMap'),
+    on:           (settings.useGoogleMap is defined) ? settings.useGoogleMap : ''
+}) }}
+
+{{ forms.textField({
+    label: 'Google Maps API Key'|t,
+    id: 'googleMapsApiKey',
+    name: 'googleMapsApiKey',
+    instructions: 'Please enter the Google Maps API key'|t,
+    value: settings.googleMapsApiKey,
+    errors: settings.getErrors('googleMapsApiKey')
+}) }}

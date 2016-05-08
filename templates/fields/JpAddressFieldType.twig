@@ -1,0 +1,133 @@
+{#
+/**
+ * JpAddress plugin for Craft CMS
+ *
+ * JpAddressFieldType HTML
+ *
+ * @author    TORU KOKUBUN
+ * @copyright Copyright (c) 2016 TORU KOKUBUN
+ * @link      http://d-s-b.jp/
+ * @package   JpAddress
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% set locale = craft.isLocalized() ? (element ? element.locale : craft.locale) %}
+
+<div id="{{ id }}" class="jpaddress__fields">
+    <input type="hidden" name="locale" value="{{ locale }}"/>
+
+    <div class="jpaddress__field block__flex">
+        <div class="postal-code">
+            <label for="{{ id ~ 'postalCode' }}">{{ 'Postal Code'|t }}</label>
+            {{ forms.text({
+                id: id ~ 'postalCode',
+                name: name ~ '[postalCode]',
+                class: 'postal-code',
+                placeholder: 'Postal Code'|t,
+                value: values.postalCode,
+                errors: values.getErrors('postalCode'),
+                required: false,
+                locale: field.translatable ? locale,
+            }) }}
+        </div>
+
+        <div class="prefecture">
+            <label for="{{ id ~ 'prefecture' }}">{{ 'Prefecture name'|t }}</label>
+            {{ forms.select({
+                id: id ~ "prefecture",
+                name: name ~ "[prefecture]",
+                class: 'prefecture',
+                options: options.prefecture,
+                value: values.prefecture,
+                required: false,
+                locale: field.translatable ? locale,
+            }) }}
+        </div>
+
+        <div class="instructions">
+            <p>{{ 'If you enter a postal code, address is automatically inserted.'|t }}</p>
+        </div>
+    </div>
+
+    <div class="jpaddress__field city-street">
+        <label for="{{ id ~ 'cityStreet' }}">{{ 'City name, Street Address'|t }}</label>
+        {{ forms.text({
+            id: id ~ 'cityStreet',
+            name: name ~ '[cityStreet]',
+            class: 'city-street',
+            placeholder: 'City name, Street Address'|t,
+            value: values.cityStreet,
+            errors: values.getErrors('cityStreet'),
+            required: false,
+            locale: field.translatable ? locale,
+        }) }}
+    </div>
+
+    <div class="jpaddress__field building">
+        <label for="{{ id ~ 'building' }}">{{ 'Building name, etc.'|t }}</label>
+        {{ forms.text({
+            id: id ~ 'building',
+            name: name ~ '[building]',
+            class: 'building',
+            placeholder: 'Building name, etc.'|t,
+            value: values.building,
+            errors: values.getErrors('building'),
+            required: false,
+            locale: field.translatable ? locale,
+        }) }}
+    </div>
+
+    {% if settings.useMap %}
+        <div class="control__fields block__flex">
+
+                <button class="btn icon control__map-refresh{% if not settings.viewMap %} hidden{% endif %}">{{ 'Updating the map coordinates at the current address'|t }}</button>
+                <button class="btn delete icon control__map-clear{% if not settings.viewMap %} hidden{% endif %}">{{ 'Delete the map coordinates'|t }}</button>
+                <button class="btn add icon dashed control__map-view{% if settings.viewMap %} hidden{% endif %}">{{ 'Insert the map coordinates from the input address'|t }}</button>
+        </div>
+        <div class="map__fields{% if not settings.viewMap %} hidden{% endif %}">
+            <div class="map__canvas"></div>
+
+            <div class="coordinate__fields block__flex">
+                <div class="coordinate__field">
+                    <label for="{{ id ~ 'latitude' }}">{{ 'Latitude'|t }}</label>
+                    {{ forms.text({
+                        id: id ~ 'latitude',
+                        name: name ~ '[latitude]',
+                        class: 'latitude',
+                        value: values.latitude,
+                        errors: values.getErrors('latitude'),
+                        required: false,
+                        locale: field.translatable ? locale,
+                    }) }}
+                </div>
+                <div class="coordinate__field">
+                    <label for="{{ id ~ 'longitude' }}">{{ 'Longitude'|t }}</label>
+                    {{ forms.text({
+                        id: id ~ 'longitude',
+                        name: name ~ '[longitude]',
+                        class: 'longitude',
+                        value: values.longitude,
+                        errors: values.getErrors('longitude'),
+                        required: false,
+                        locale: field.translatable ? locale,
+                    }) }}
+                </div>
+                <div class="coordinate__field">
+                    <label for="{{ id ~ 'zoomLevel' }}">{{ 'Zoom Level'|t }}</label>
+                    {{ forms.text({
+                        id: id ~ 'zoomLevel',
+                        name: name ~ '[zoomLevel]',
+                        class: 'zoom-level',
+                        value: values.zoomLevel,
+                        errors: values.getErrors('zoomLevel'),
+                        required: false,
+                        locale: field.translatable ? locale,
+                    }) }}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>

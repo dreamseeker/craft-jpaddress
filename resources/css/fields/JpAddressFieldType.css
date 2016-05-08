@@ -1,0 +1,67 @@
+/**
+ * JpAddress plugin for Craft CMS
+ *
+ * JpAddressFieldType CSS
+ *
+ * @author    TORU KOKUBUN
+ * @copyright Copyright (c) 2016 TORU KOKUBUN
+ * @link      http://d-s-b.jp/
+ * @package   JpAddress
+ * @since     1.0.0
+ */
+
+.jpaddress__fields .block__flex {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.jpaddress__field {
+    padding-bottom: 0.75em;
+}
+
+.jpaddress__field label {
+    display: none;
+}
+
+.jpaddress__field .postal-code {
+    min-width: 6em;
+    max-width: 8em;
+}
+
+.jpaddress__field > .prefecture {
+    min-width: 135px;
+    margin: 0 5px;
+}
+
+.jpaddress__field > .instructions {
+    font-size: 11px;
+    color: #8f98a3;
+}
+
+.control__fields {
+    justify-content: flex-end;
+}
+
+.map__canvas {
+    height: 400px;
+    margin-top: 0.75em;
+    background-color: #8f98a3;
+}
+
+.coordinate__fields {
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.coordinate__field {
+    width: 33%;
+    padding-top: 0.75em;
+    margin-right: 0 !important;
+}
+
+.coordinate__field .text[readonly] {
+    box-shadow: none;
+    border-color: #e3e5e8;
+    background-color: #f2f2f2;
+}
