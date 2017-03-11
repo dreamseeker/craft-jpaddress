@@ -47,14 +47,6 @@ class JpAddressFieldType extends BaseFieldType
         $pluginSettings = craft()->plugins->getPlugin('JpAddress')->getSettings();
 
         /* -- Include our Javascript & CSS */
-
-        if ($pluginSettings['useGoogleMap']) {
-            $apiKey = ($pluginSettings['googleMapsApiKey']) ? '?key=' . $pluginSettings['googleMapsApiKey'] : null;
-            $apiUrl = 'https://maps.googleapis.com/maps/api/js' . $apiKey;
-            craft()->templates->includeJsFile($apiUrl);
-            craft()->templates->includeJsResource('jpaddress/js/library/JpAddressFieldType_GoogleMaps.js');
-        }
-
         craft()->templates->includeCssResource('jpaddress/css/fields/JpAddressFieldType.css');
         craft()->templates->includeJsResource('jpaddress/js/fields/JpAddressFieldType.js');
 

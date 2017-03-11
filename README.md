@@ -51,11 +51,13 @@ Some things to do, and ideas for potential features:
 
 ## JP Address Changelog
 
+### 1.0.3 -- 2017.03.11
+
+* Fixed a bug that can't set Google Maps Coordinates when create new entry in relatedTo modal window.
+
 ### 1.0.2 -- 2017.03.11
 
 * Fixed a JavaScript error to occur when create new entry in relatedTo modal window.
-
-> [note] Now, JpAddressFieldType.js contains jquery.jpostal.js code.
 
 ### 1.0.1 -- 2017.03.11
 

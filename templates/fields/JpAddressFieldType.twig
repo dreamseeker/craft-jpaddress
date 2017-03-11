@@ -82,10 +82,9 @@
 
     {% if settings.useMap %}
         <div class="control__fields block__flex">
-
-                <button class="btn icon control__map-refresh{% if not settings.viewMap %} hidden{% endif %}">{{ 'Updating the map coordinates at the current address'|t }}</button>
-                <button class="btn delete icon control__map-clear{% if not settings.viewMap %} hidden{% endif %}">{{ 'Delete the map coordinates'|t }}</button>
-                <button class="btn add icon dashed control__map-view{% if settings.viewMap %} hidden{% endif %}">{{ 'Insert the map coordinates from the input address'|t }}</button>
+            <a class="btn icon control__map-refresh{% if not settings.viewMap %} hidden{% endif %}">{{ 'Updating the map coordinates at the current address'|t }}</a>
+            <a class="btn delete icon control__map-clear{% if not settings.viewMap %} hidden{% endif %}">{{ 'Delete the map coordinates'|t }}</a>
+            <a class="btn add icon dashed control__map-view{% if settings.viewMap %} hidden{% endif %}">{{ 'Insert the map coordinates from the input address'|t }}</a>
         </div>
         <div class="map__fields{% if not settings.viewMap %} hidden{% endif %}">
             <div class="map__canvas"></div>

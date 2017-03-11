@@ -20,6 +20,10 @@ class JpAddressPlugin extends BasePlugin
      */
     public function init()
     {
+        parent::init();
+        if (craft()->request->isCpRequest()) {
+            $this->preloadJsLibrary();
+        }
     }
 
     /**
@@ -59,7 +63,7 @@ class JpAddressPlugin extends BasePlugin
      */
     public function getVersion()
     {
-        return '1.0.2';
+        return '1.0.3';
     }
 
     /**
@@ -149,5 +153,40 @@ class JpAddressPlugin extends BasePlugin
         // Modify $settings here...
 
         return $settings;
+    }
+
+    /**
+     *
+     */
+    private function preloadJsLibrary()
+    {
+        $pluginSettings = $this->getSettings();
+        if ($pluginSettings['useGoogleMap']) {
+            // set Google Maps API URL
+            $apiKey = ($pluginSettings['googleMapsApiKey']) ? '?key=' . $pluginSettings['googleMapsApiKey'] : null;
+            $apiUrl = 'https://maps.googleapis.com/maps/api/js' . $apiKey;
+
+            // set JpAddressFieldType_GoogleMaps.js URL
+            $admin = craft()->config->get('cpTrigger');
+            $scriptUrl = '/' . $admin . '/resources/jpaddress/js/library/JpAddressFieldType_GoogleMaps.js';
+            
+            craft()->templates->includeJs("
+                if(typeof google == 'undefined') {
+                    requestAnimationFrame(function(l) {
+                        l = document.createElement('script');
+                        l.type = 'text/javascript';
+                        l.src = '$apiUrl';
+                        document.head.appendChild(l);
+                        l = document.createElement('script');
+                        l.type = 'text/javascript';
+                        l.src = '$scriptUrl';
+                        document.head.appendChild(l);
+                    });
+                }
+            ", true);
+        }
+
+        // load jquery.jpostal.js
+        craft()->templates->includeJsFile('//jpostal-1006.appspot.com/jquery.jpostal.js');
     }
 }

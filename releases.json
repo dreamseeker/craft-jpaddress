@@ -1,10 +1,10 @@
 [
     {
-        "version": "1.0.1",
+        "version": "1.0.3",
         "downloadUrl": "https://github.com/dreamseeker/craft-jpaddress/archive/master.zip",
-        "date": "2017-03-11T14:00:00.434Z",
+        "date": "2017-03-11T18:00:00.434Z",
         "notes": [
-            "[Update] Fixed a JavaScript error to occur when you did not use Google Maps Coordinates."
+            "[Update] Fixed a bug that can't set Google Maps Coordinates when create new entry in relatedTo modal window."
         ]
     }
 ]
