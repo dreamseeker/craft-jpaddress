@@ -55,12 +55,10 @@ class JpAddressFieldType extends BaseFieldType
             craft()->templates->includeJsResource('jpaddress/js/library/JpAddressFieldType_GoogleMaps.js');
         }
 
-        craft()->templates->includeJsFile('//jpostal-1006.appspot.com/jquery.jpostal.js');
         craft()->templates->includeCssResource('jpaddress/css/fields/JpAddressFieldType.css');
         craft()->templates->includeJsResource('jpaddress/js/fields/JpAddressFieldType.js');
 
         /* -- Variables to pass down to our field.js */
-
         $jsonVars = array(
             'id' => $id,
             'name' => $name,
@@ -72,7 +70,6 @@ class JpAddressFieldType extends BaseFieldType
         craft()->templates->includeJs("$('#{$namespacedId}').JpAddressFieldType(" . $jsonVars . ");");
 
         /* -- Variables to pass down to our rendered template */
-
         $variables = array(
             'id' => $id,
             'name' => $name,
