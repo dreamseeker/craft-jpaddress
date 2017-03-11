@@ -106,19 +106,18 @@
                 _lng = parseFloat(_this.escapeHTML(_this.objects['longitude'].val())),
                 _zoom = parseInt(_this.escapeHTML(_this.objects['zoomLevel'].val()));
 
-            console.log('_lat', _lat);
-            console.log('_lng', _lng);
-
-            if (isFinite(_lat) && isFinite(_lng)) {
-                $.JpAddressGoogleMapFields({
-                    namespace: _this.options.namespace,
-                    mapPosition: [_lat, _lng, _zoom]
-                });
-            } else {
-                $.JpAddressGoogleMapFields({
-                    namespace: _this.options.namespace,
-                    fourceDefaultPosition: true
-                });
+            if($.isFunction($.JpAddressGoogleMapFields)) {
+                if (isFinite(_lat) && isFinite(_lng)) {
+                    $.JpAddressGoogleMapFields({
+                        namespace: _this.options.namespace,
+                        mapPosition: [_lat, _lng, _zoom]
+                    });
+                } else {
+                    $.JpAddressGoogleMapFields({
+                        namespace: _this.options.namespace,
+                        fourceDefaultPosition: true
+                    });
+                }
             }
         },
 

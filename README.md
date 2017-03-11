@@ -13,7 +13,7 @@ To install JP Address, follow these steps:
 3. Install plugin in the Craft Control Panel under Settings > Plugins
 4. The plugin folder should be named `jpaddress` for Craft to see it.  GitHub recently started appending `-master` (the branch name) to the name of the folder for zip file downloads.
 
-JP Address works on Craft 2.4.x and Craft 2.5.x.
+JP Address works on Craft 2.6.x.
 
 ## JP Address Overview
 
@@ -26,6 +26,8 @@ Create a JP Address field via Settings->Fields.
 ## Using JP Address
 
 Once you have created the JP Address field, add it to your Section Entry Types, and fill in address information. Each address can contain Google Maps Coordinates.
+
+> [hint] You can change it in Settings->Plugins, if Google Maps Coordinates is unnecessary. `Google Maps API Key` can input in the same screen, too.
 
 ## Using JP Address in your Templates
 
@@ -48,6 +50,11 @@ Some things to do, and ideas for potential features:
 * For a list of Prefecture
 
 ## JP Address Changelog
+
+### 1.0.1 -- 2017.03.11
+
+* Fixed a JavaScript error to occur when you did not use Google Maps Coordinates.
+* Update explanations of README.md
 
 ### 1.0.0 -- 2016.05.08
 
