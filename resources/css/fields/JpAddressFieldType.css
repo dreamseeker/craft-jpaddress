@@ -34,6 +34,20 @@
     margin: 0 5px;
 }
 
+.jpaddress__fields .city-street.block__flex {
+   justify-content: space-between;
+}
+
+.jpaddress__field > .city {
+  flex: 0 0 33%;
+  max-width: 33%;
+}
+
+.jpaddress__field > .street {
+  flex: 0 0 66%;
+  max-width: 66%;
+}
+
 .jpaddress__field > .instructions {
     font-size: 11px;
     color: #8f98a3;

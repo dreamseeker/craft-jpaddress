@@ -17,6 +17,16 @@
 <input type="hidden" name="locale" value="{{ craft.locale }}"/>
 
 {{ forms.lightswitchField({
+  label:        'Use City Field?'|t,
+  id:           'useCityField',
+  name:         'useCityField',
+  instructions: 'Please turn on if you use City field'|t,
+  value:        settings.useCityField,
+  errors:       settings.getErrors('useCityField'),
+  on:           (settings.useCityField is defined) ? settings.useCityField : ''
+}) }}
+
+{{ forms.lightswitchField({
     label:        'Use Map?'|t,
     id:           'useGoogleMap',
     name:         'useGoogleMap',

@@ -24,9 +24,11 @@ class JpAddressModel extends BaseModel
             'postalCode' => array(AttributeType::String, 'default' => ''),
             'prefecture' => array(AttributeType::String, 'default' => ''),
             'cityStreet' => array(AttributeType::String, 'default' => ''),
-            'building' => array(AttributeType::String, 'default' => ''),
+            'city'       => array(AttributeType::String, 'default' => ''),
+            'street'     => array(AttributeType::String, 'default' => ''),
+            'building'   => array(AttributeType::String, 'default' => ''),
 
-            'latitude' => array(AttributeType::Mixed, 'default' => ''),
+            'latitude'  => array(AttributeType::Mixed, 'default' => ''),
             'longitude' => array(AttributeType::Mixed, 'default' => ''),
             'zoomLevel' => array(AttributeType::Number, 'default' => 16),
         ));

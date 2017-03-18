@@ -71,6 +71,8 @@
 
             _this.objects['prefecture'] = $element.find('.prefecture > select');
             _this.objects['cityStreet'] = $element.find('input.city-street');
+            _this.objects['city'] = $element.find('input.city');
+            _this.objects['street'] = $element.find('input.street');
             _this.objects['building'] = $element.find('input.building');
 
             _this.objects['latitude'] = $element.find('input.latitude');
@@ -86,12 +88,24 @@
             var _address = {},
                 _postalCode = '#' + $element.find('input.postal-code').attr('id'),
                 _prefecture = '#' + $element.find('.select.prefecture select').attr('id'),
-                _cityStreet = '#' + $element.find('input.city-street').attr('id'),
                 _building = '#' + $element.find('input.building').attr('id');
 
             _address[_prefecture] = "%3";
-            _address[_cityStreet] = "%4%5";
             _address[_building] = "%6%7";
+
+            if($element.find('input.city-street').length){
+                // City-Street field only
+                var _cityStreet = '#' + $element.find('input.city-street').attr('id');
+
+                _address[_cityStreet] = "%4%5";
+            } else {
+                // separate City / Street field
+                var _city = '#' + $element.find('input.city').attr('id'),
+                    _street = '#' + $element.find('input.street').attr('id');
+
+                _address[_city] = "%4";
+                _address[_street] = "%5";
+            }
 
             $element.find('input.postal-code').jpostal({
                 postcode: [_postalCode],
@@ -118,6 +132,10 @@
                         fourceDefaultPosition: true
                     });
                 }
+            } else {
+                setTimeout(function(){
+                    _this.refreshMapCoordinates();
+                }, 500);
             }
         },
 
@@ -125,7 +143,16 @@
             var _this = this;
 
             var _address = _this.escapeHTML(_this.objects['prefecture'].val());
-                _address += _this.escapeHTML(_this.objects['cityStreet'].val());
+
+                if(_this.objects['cityStreet'].length){
+                    // City-Street field only
+                    _address += _this.escapeHTML(_this.objects['cityStreet'].val());
+                } else {
+                    // separate City / Street field
+                    _address += _this.escapeHTML(_this.objects['city'].val());
+                    _address += _this.escapeHTML(_this.objects['street'].val());
+                }
+
                 _address += _this.escapeHTML(_this.objects['building'].val());
 
             if (_address) {

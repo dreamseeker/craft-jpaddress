@@ -1,10 +1,10 @@
 [
     {
-        "version": "1.0.3",
+        "version": "1.0.4",
         "downloadUrl": "https://github.com/dreamseeker/craft-jpaddress/archive/master.zip",
-        "date": "2017-03-11T18:00:00.434Z",
+        "date": "2017-03-18T11:00:00.434Z",
         "notes": [
-            "[Update] Fixed a bug that can't set Google Maps Coordinates when create new entry in relatedTo modal window."
+            "[Update] Add `Use City Field` in Settings->Plugins. If choose it, you can input city and street address at independent field. Fixed a bug that can't view Google Maps when edit entry."
         ]
     }
 ]

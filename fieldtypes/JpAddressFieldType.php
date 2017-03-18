@@ -71,9 +71,10 @@ class JpAddressFieldType extends BaseFieldType
             'values' => $value
         );
 
-        $variables['options']['prefecture'] = $this->setPrefectureSelectOptions();
-        $variables['settings']['useMap'] = $pluginSettings['useGoogleMap'];
-        $variables['settings']['viewMap'] = ($value['latitude'] && $value['longitude']) ? true : false;
+        $variables['options']['prefecture']    = $this->setPrefectureSelectOptions();
+        $variables['settings']['useCityField'] = $pluginSettings['useCityField'];
+        $variables['settings']['useMap']       = $pluginSettings['useGoogleMap'];
+        $variables['settings']['viewMap']      = ($value['latitude'] && $value['longitude']) ? true : false;
 
         return craft()->templates->render('jpaddress/fields/JpAddressFieldType.twig', $variables);
     }

@@ -52,19 +52,50 @@
         </div>
     </div>
 
-    <div class="jpaddress__field city-street">
-        <label for="{{ id ~ 'cityStreet' }}">{{ 'City name, Street Address'|t }}</label>
-        {{ forms.text({
-            id: id ~ 'cityStreet',
-            name: name ~ '[cityStreet]',
-            class: 'city-street',
-            placeholder: 'City name, Street Address'|t,
-            value: values.cityStreet,
-            errors: values.getErrors('cityStreet'),
-            required: false,
-            locale: field.translatable ? locale,
-        }) }}
-    </div>
+    {% if settings.useCityField %}
+        <div class="jpaddress__field city-street block__flex">
+            <div class="city">
+                <label for="{{ id ~ 'city' }}">{{ 'City name'|t }}</label>
+                {{ forms.text({
+                  id: id ~ 'city',
+                  name: name ~ '[city]',
+                  class: 'city',
+                  placeholder: 'City name'|t,
+                  value: values.city,
+                  errors: values.getErrors('city'),
+                  required: false,
+                  locale: field.translatable ? locale,
+                }) }}
+              </div>
+              <div class="street">
+                <label for="{{ id ~ 'street' }}">{{ 'Street Address'|t }}</label>
+                {{ forms.text({
+                  id: id ~ 'street',
+                  name: name ~ '[street]',
+                  class: 'street',
+                  placeholder: 'Street Address'|t,
+                  value: values.street,
+                  errors: values.getErrors('street'),
+                  required: false,
+                  locale: field.translatable ? locale,
+                }) }}
+            </div>
+        </div>
+    {% else %}
+        <div class="jpaddress__field city-street">
+            <label for="{{ id ~ 'cityStreet' }}">{{ 'City name, Street Address'|t }}</label>
+            {{ forms.text({
+                id: id ~ 'cityStreet',
+                name: name ~ '[cityStreet]',
+                class: 'city-street',
+                placeholder: 'City name, Street Address'|t,
+                value: values.cityStreet,
+                errors: values.getErrors('cityStreet'),
+                required: false,
+                locale: field.translatable ? locale,
+            }) }}
+        </div>
+    {% endif %}
 
     <div class="jpaddress__field building">
         <label for="{{ id ~ 'building' }}">{{ 'Building name, etc.'|t }}</label>

@@ -37,7 +37,9 @@ To display information about a jpaddress in your templates, you just use familia
 
 * {{ entry.sampleAddress.postalCode }} - Postal code
 * {{ entry.sampleAddress.prefecture }} - Name of prefectures
-* {{ entry.sampleAddress.cityStreet }} - City name, Street Address
+* {{ entry.sampleAddress.cityStreet }} - City name, Street Address (when `Use City Field?` setting is invalid.)
+* {{ entry.sampleAddress.city }} - City name (when `Use City Field?` setting is valid.)
+* {{ entry.sampleAddress.street }} - Street name (when `Use City Field?` setting is valid.)
 * {{ entry.sampleAddress.building }} - Building name, etc.
 * {{ entry.sampleAddress.latitude }} - Latitude for Google Maps
 * {{ entry.sampleAddress.longitude }} - Longitude for Google Maps
@@ -50,6 +52,11 @@ Some things to do, and ideas for potential features:
 * For a list of Prefecture
 
 ## JP Address Changelog
+
+### 1.0.4 -- 2017.03.18
+
+* Add `Use City Field` in Settings->Plugins. If choose it, you can input city and street address at independent field.
+* Fixed a bug that can't view Google Maps when edit entry.
 
 ### 1.0.3 -- 2017.03.11
 

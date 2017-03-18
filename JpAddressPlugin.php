@@ -63,7 +63,7 @@ class JpAddressPlugin extends BasePlugin
      */
     public function getVersion()
     {
-        return '1.0.3';
+        return '1.0.4';
     }
 
     /**
@@ -128,6 +128,7 @@ class JpAddressPlugin extends BasePlugin
     protected function defineSettings()
     {
         return array(
+            'useCityField' => array(AttributeType::Bool, 'default' => 0, 'required' => true),
             'useGoogleMap' => array(AttributeType::Bool, 'default' => 1, 'required' => true),
             'googleMapsApiKey' => array(AttributeType::String, 'default' => ''),
         );
@@ -169,7 +170,7 @@ class JpAddressPlugin extends BasePlugin
             // set JpAddressFieldType_GoogleMaps.js URL
             $admin = craft()->config->get('cpTrigger');
             $scriptUrl = '/' . $admin . '/resources/jpaddress/js/library/JpAddressFieldType_GoogleMaps.js';
-            
+
             craft()->templates->includeJs("
                 if(typeof google == 'undefined') {
                     requestAnimationFrame(function(l) {
